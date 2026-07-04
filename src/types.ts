@@ -1,4 +1,4 @@
-export type Screen = 'signup' | 'step1' | 'step2' | 'ready';
+export type Screen = 'signup' | 'step1' | 'step2' | 'analyzing' | 'ready';
 
 export type ProductDraft = {
   id: string;
