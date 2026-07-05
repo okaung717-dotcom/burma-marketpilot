@@ -283,7 +283,7 @@ export default function App() {
     <div className="ambient ambient-one" />
     <div className="ambient ambient-two" />
 
-    {screen !== 'signup' ? <div className="app-floating-utilities utility-bar" aria-label="Page controls">
+    {(screen === 'step1' || screen === 'step2') ? <div className="app-floating-utilities utility-bar" aria-label="Page controls">
       <button className="utility-btn utility-back-btn" type="button" onClick={handleGlobalBack}>{language === 'my' ? 'နောက်သို့' : 'Back'}</button>
       <button className="utility-btn" type="button" onClick={() => setLanguage(language === 'en' ? 'my' : 'en')} aria-label="Switch language">{copy.language}</button>
       <button className="utility-btn" type="button" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label="Toggle dark mode">{theme === 'light' ? copy.themeDark : copy.themeLight}</button>
