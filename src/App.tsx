@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import AnalysisLoadingPage from './AnalysisLoading';
 import DashboardExperience from './DashboardExperience';
 import type { BusinessDraft, ProductDraft, SetupDraft } from './types';
+import './SignupEnhancements.css';
 
 const categories = ['Fashion', 'F&B', 'Beauty', 'Tech Services', 'Retail'];
 const frequencies = ['Daily', '2-3 Times a Week', 'Weekly', 'Occasionally'];
