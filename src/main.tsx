@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './App.css';
 import './SignupEnhancements.css';
+import './SignupTypography.css';
 import './BusinessDnaSetup.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
