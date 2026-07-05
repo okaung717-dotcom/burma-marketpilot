@@ -47,7 +47,7 @@ const initialSetup: SetupDraft = {
 type AppScreen = 'signup' | 'step1' | 'step2' | 'analyzing' | 'dashboardOpening' | 'dashboard';
 type ThemeMode = 'light' | 'dark';
 type LanguageMode = 'en' | 'my';
-type AuthDraft = { username: string; password: string };
+type AuthDraft = { email: string; password: string };
 
 const signupCopy = {
   en: {
@@ -61,16 +61,18 @@ const signupCopy = {
       { badge: '03', title: 'Export-ready Strategy', body: 'Prepares a clear roadmap that can become Google Sheet and PDF-ready marketing work.' }
     ],
     authTitle: 'Create your account',
-    authBody: 'Sign up with a user name and password to start a real MarketPilot workspace on this device.',
-    username: 'User name',
-    usernamePlaceholder: 'e.g. royalrangoon',
+    authBody: 'Use a real email address and password to open a MarketPilot workspace on this device.',
+    email: 'Email address',
+    emailPlaceholder: 'e.g. owner@royalrangoon.com',
+    emailHelp: 'A valid email format is required before setup can start.',
+    emailCreate: 'Create email account',
     password: 'Password',
     passwordPlaceholder: 'Minimum 6 characters',
     show: 'Show',
     hide: 'Hide',
     submit: 'Sign Up & Start Setup',
-    saved: 'Your workspace preferences will be remembered on this browser.',
-    error: 'Please enter a user name with at least 3 characters and a password with at least 6 characters.',
+    saved: 'Your email-based workspace preferences will be remembered on this browser.',
+    error: 'Please enter a valid email address and a password with at least 6 characters.',
     themeDark: 'Dark mode',
     themeLight: 'Light mode',
     language: 'မြန်မာ'
@@ -86,16 +88,18 @@ const signupCopy = {
       { badge: '03', title: 'Export-ready Strategy', body: 'Google Sheet နဲ့ PDF ထုတ်နိုင်တဲ့ Marketing Roadmap ပုံစံအထိ သေချာရှင်းလင်းစီမံပေးမယ်။' }
     ],
     authTitle: 'Account ဖန်တီးပါ',
-    authBody: 'User name နဲ့ Password ထည့်ပြီး ဒီ Browser ပေါ်မှာ MarketPilot Workspace ကို စတင်အသုံးပြုပါ။',
-    username: 'User name',
-    usernamePlaceholder: 'ဥပမာ - royalrangoon',
+    authBody: 'Email အစစ်နဲ့ Password ထည့်ပြီး ဒီ Browser ပေါ်မှာ MarketPilot Workspace ကို စတင်အသုံးပြုပါ။',
+    email: 'Email',
+    emailPlaceholder: 'ဥပမာ - owner@royalrangoon.com',
+    emailHelp: 'Setup စတင်နိုင်ဖို့ အသုံးပြုနိုင်တဲ့ Email format မှန်မှန် ထည့်ပေးပါ။',
+    emailCreate: 'Email account ဖန်တီးမယ်',
     password: 'Password',
     passwordPlaceholder: 'အနည်းဆုံး ၆ လုံး',
     show: 'ပြ',
     hide: 'ဖုံး',
     submit: 'Sign Up လုပ်ပြီး Setup စတင်မယ်',
-    saved: 'သင့် Workspace Preference တွေကို ဒီ Browser မှာ မှတ်ထားပေးပါမယ်။',
-    error: 'User name အနည်းဆုံး ၃ လုံးနဲ့ Password အနည်းဆုံး ၆ လုံး ထည့်ပေးပါ။',
+    saved: 'သင့် Email-based Workspace Preference တွေကို ဒီ Browser မှာ မှတ်ထားပေးပါမယ်။',
+    error: 'Email မှန်မှန်နဲ့ Password အနည်းဆုံး ၆ လုံး ထည့်ပေးပါ။',
     themeDark: 'Dark mode',
     themeLight: 'Light mode',
     language: 'English'
@@ -113,12 +117,18 @@ function getStoredLanguage(): LanguageMode {
   return stored === 'my' ? 'my' : 'en';
 }
 
-function getStoredUsername() {
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(value.trim());
+}
+
+function getStoredEmail() {
   try {
     const stored = window.localStorage.getItem('marketpilot-user');
     if (!stored) return '';
-    const parsed = JSON.parse(stored) as { username?: string };
-    return parsed.username ?? '';
+    const parsed = JSON.parse(stored) as { email?: string; username?: string };
+    if (parsed.email && isValidEmail(parsed.email)) return parsed.email;
+    if (parsed.username && isValidEmail(parsed.username)) return parsed.username;
+    return '';
   } catch {
     return '';
   }
@@ -156,12 +166,12 @@ export default function App() {
   const [analysisReady, setAnalysisReady] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>(getStoredTheme);
   const [language, setLanguage] = useState<LanguageMode>(getStoredLanguage);
-  const [auth, setAuth] = useState<AuthDraft>({ username: getStoredUsername(), password: '' });
+  const [auth, setAuth] = useState<AuthDraft>({ email: getStoredEmail(), password: '' });
   const [authError, setAuthError] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const copy = signupCopy[language];
-  const signupReady = auth.username.trim().length >= 3 && auth.password.length >= 6;
+  const signupReady = isValidEmail(auth.email) && auth.password.length >= 6;
   const progress = useMemo(() => {
     if (screen === 'signup') return 12;
     if (screen === 'step1') return 48;
@@ -212,10 +222,11 @@ export default function App() {
       return;
     }
     const workspace = {
-      username: auth.username.trim(),
+      email: auth.email.trim().toLowerCase(),
       createdAt: new Date().toISOString(),
       workspaceId: `mp-${Date.now()}`,
-      passwordSet: true
+      passwordSet: true,
+      emailFormatVerified: true
     };
     window.localStorage.setItem('marketpilot-user', JSON.stringify(workspace));
     setAuthError('');
@@ -261,7 +272,7 @@ export default function App() {
   }
 
   return <div className={`app-shell theme-${theme}`}><div className="progress-track"><span style={{ width: `${progress}%` }} /></div><div className="ambient ambient-one" /><div className="ambient ambient-two" />
-    {screen === 'signup' ? <main className="signup-page"><div className="signup-topline"><BrandMark /><div className="utility-bar"><button className="utility-btn" type="button" onClick={() => setLanguage(language === 'en' ? 'my' : 'en')} aria-label="Switch language">{copy.language}</button><button className="utility-btn" type="button" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label="Toggle dark mode">{theme === 'light' ? copy.themeDark : copy.themeLight}</button></div></div><section className="signup-layout"><div className="hero-copy"><span className="eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.description}</p><div className="service-stack" aria-label={copy.overviewLabel}>{copy.services.map((service) => <article className="service-card" key={service.title}><span>{service.badge}</span><div><b>{service.title}</b><p>{service.body}</p></div></article>)}</div></div><section className="auth-card glass"><div className="card-head center"><span className="mini-orbit">•</span><h2>{copy.authTitle}</h2><p>{copy.authBody}</p></div><form className="auth-form" onSubmit={handleSignup}><label className="field"><span className="field-label">{copy.username}</span><input value={auth.username} onChange={(event) => setAuth({ ...auth, username: event.target.value })} placeholder={copy.usernamePlaceholder} autoComplete="username" /></label><label className="field"><span className="field-label">{copy.password}</span><div className="password-wrap"><input value={auth.password} onChange={(event) => setAuth({ ...auth, password: event.target.value })} placeholder={copy.passwordPlaceholder} type={passwordVisible ? 'text' : 'password'} autoComplete="new-password" /><button type="button" onClick={() => setPasswordVisible((current) => !current)}>{passwordVisible ? copy.hide : copy.show}</button></div></label>{authError ? <p className="auth-error">{authError}</p> : <p className="auth-security">{copy.saved}</p>}<button className="primary-btn full" type="submit" disabled={!signupReady}>{copy.submit}</button></form></section></section></main> : null}
+    {screen === 'signup' ? <main className={`signup-page signup-lang-${language}`} lang={language === 'my' ? 'my' : 'en'}><div className="signup-topline"><BrandMark /><div className="utility-bar"><button className="utility-btn" type="button" onClick={() => setLanguage(language === 'en' ? 'my' : 'en')} aria-label="Switch language">{copy.language}</button><button className="utility-btn" type="button" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label="Toggle dark mode">{theme === 'light' ? copy.themeDark : copy.themeLight}</button></div></div><section className="signup-layout"><div className="hero-copy"><span className="eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.description}</p><div className="service-stack" aria-label={copy.overviewLabel}>{copy.services.map((service) => <article className="service-card" key={service.title}><span>{service.badge}</span><div><b>{service.title}</b><p>{service.body}</p></div></article>)}</div></div><section className="auth-card glass"><div className="card-head center"><span className="mini-orbit">•</span><h2>{copy.authTitle}</h2><p>{copy.authBody}</p></div><form className="auth-form" onSubmit={handleSignup}><label className="field email-field"><span className="field-label">{copy.email}</span><input value={auth.email} onChange={(event) => { setAuth({ ...auth, email: event.target.value }); if (authError) setAuthError(''); }} placeholder={copy.emailPlaceholder} type="email" inputMode="email" autoComplete="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" /><small className="email-helper">{copy.emailHelp} <a className="email-create-link" href="https://accounts.google.com/signup" target="_blank" rel="noreferrer">{copy.emailCreate}</a></small></label><label className="field"><span className="field-label">{copy.password}</span><div className="password-wrap"><input value={auth.password} onChange={(event) => { setAuth({ ...auth, password: event.target.value }); if (authError) setAuthError(''); }} placeholder={copy.passwordPlaceholder} type={passwordVisible ? 'text' : 'password'} autoComplete="new-password" /><button type="button" onClick={() => setPasswordVisible((current) => !current)}>{passwordVisible ? copy.hide : copy.show}</button></div></label>{authError ? <p className="auth-error">{authError}</p> : <p className="auth-security">{copy.saved}</p>}<button className="primary-btn full" type="submit" disabled={!signupReady}>{copy.submit}</button></form></section></section></main> : null}
 
     {screen === 'step1' ? <main className="page-container business-dna-page"><Header step="Step 1 of 2" title="Business DNA Setup" subtitle="Brand Assets, Product Data and Management Intelligence" />
       <section className="dna-overview glass">
