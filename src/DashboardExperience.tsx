@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { BusinessDraft, SetupDraft } from './types';
 import './DashboardExperience.css';
+import './GlobalThemeFixes.css';
 
 type CalendarRow = {
   date: string;
