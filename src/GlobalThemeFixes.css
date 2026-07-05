@@ -1,5 +1,5 @@
-/* Global page controls + contrast safety layer
-   Imported last so every screen stays readable in light and dark mode. */
+/* Global page controls + contrast safety layer.
+   Important overrides are intentional so every screen stays readable in light and dark mode. */
 
 :root {
   --on-primary: #fff8e7;
@@ -19,7 +19,7 @@
 
 body,
 .app-shell {
-  color: var(--ink);
+  color: var(--ink) !important;
 }
 
 .app-shell {
@@ -36,7 +36,7 @@ body,
 .download-actions button,
 .studio-note button,
 .open-results-btn {
-  color: var(--on-primary);
+  color: var(--on-primary) !important;
 }
 
 :root[data-theme='dark'] .primary-btn,
@@ -47,67 +47,67 @@ body,
 :root[data-theme='dark'] .download-actions button,
 :root[data-theme='dark'] .studio-note button,
 :root[data-theme='dark'] .open-results-btn {
-  color: var(--on-primary);
+  color: var(--on-primary) !important;
 }
 
 .app-floating-utilities {
-  position: fixed;
-  top: 18px;
-  right: 24px;
-  z-index: 90;
-  max-width: calc(100vw - 48px);
+  position: fixed !important;
+  top: 18px !important;
+  right: 24px !important;
+  z-index: 90 !important;
+  max-width: calc(100vw - 48px) !important;
 }
 
 .app-floating-utilities .utility-btn {
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .utility-back-btn {
-  color: var(--primary);
-  background: rgba(223, 245, 240, 0.72);
-  border-color: rgba(0, 97, 89, 0.16);
+  color: var(--primary) !important;
+  background: rgba(223, 245, 240, 0.72) !important;
+  border-color: rgba(0, 97, 89, 0.16) !important;
 }
 
 :root[data-theme='dark'] .utility-back-btn {
-  color: var(--ink);
-  background: rgba(22, 199, 183, 0.12);
-  border-color: rgba(22, 199, 183, 0.24);
+  color: var(--ink) !important;
+  background: rgba(22, 199, 183, 0.12) !important;
+  border-color: rgba(22, 199, 183, 0.24) !important;
 }
 
 :root[data-theme='dark'] .ghost-btn {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(226, 242, 236, 0.18);
+  color: var(--ink) !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  border-color: rgba(226, 242, 236, 0.18) !important;
 }
 
 :root[data-theme='dark'] .ghost-btn:hover {
-  border-color: rgba(40, 225, 207, 0.34);
-  background: rgba(40, 225, 207, 0.1);
+  border-color: rgba(40, 225, 207, 0.34) !important;
+  background: rgba(40, 225, 207, 0.1) !important;
 }
 
 :root[data-theme='dark'] .pill-soft {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.075);
-  border: 1px solid rgba(226, 242, 236, 0.1);
+  color: var(--ink) !important;
+  background: rgba(255, 255, 255, 0.075) !important;
+  border: 1px solid rgba(226, 242, 236, 0.1) !important;
 }
 
 :root[data-theme='dark'] .bottom-nav {
-  background: rgba(13, 24, 22, 0.82);
+  background: rgba(13, 24, 22, 0.82) !important;
 }
 
 /* Business DNA contrast checks */
 :root[data-theme='dark'] .premium-chip-row .chip,
 :root[data-theme='dark'] .chip:not(.chip-active) {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(226, 242, 236, 0.16);
+  color: var(--ink) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(226, 242, 236, 0.16) !important;
 }
 
 :root[data-theme='dark'] .premium-chip-row .chip-active,
 :root[data-theme='dark'] .chip-active {
-  color: var(--on-primary);
-  background: var(--primary);
-  border-color: var(--primary-2);
+  color: var(--on-primary) !important;
+  background: var(--primary) !important;
+  border-color: var(--primary-2) !important;
 }
 
 :root[data-theme='dark'] .setup-metrics b,
@@ -117,7 +117,7 @@ body,
 :root[data-theme='dark'] .product-number,
 :root[data-theme='dark'] .add-product-btn,
 :root[data-theme='dark'] .ready-note b {
-  color: var(--ink);
+  color: var(--ink) !important;
 }
 
 :root[data-theme='dark'] .setup-metrics div,
@@ -127,15 +127,15 @@ body,
 :root[data-theme='dark'] .ready-note,
 :root[data-theme='dark'] .logo-upload-zone,
 :root[data-theme='dark'] .premium-image-slot {
-  background: var(--readable-card);
-  border-color: var(--readable-border);
+  background: var(--readable-card) !important;
+  border-color: var(--readable-border) !important;
 }
 
 :root[data-theme='dark'] .business-dna-page input,
 :root[data-theme='dark'] .business-dna-page textarea {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.075);
-  border-color: rgba(226, 242, 236, 0.18);
+  color: var(--ink) !important;
+  background: rgba(255, 255, 255, 0.075) !important;
+  border-color: rgba(226, 242, 236, 0.18) !important;
 }
 
 /* Analysis loading page contrast checks */
@@ -143,41 +143,41 @@ body,
   background:
     radial-gradient(circle at 29% 82%, rgba(255, 191, 105, 0.1), transparent 30%),
     radial-gradient(circle at 76% 56%, rgba(22, 199, 183, 0.09), transparent 32%),
-    linear-gradient(180deg, rgba(15, 27, 24, 0.92), rgba(7, 17, 15, 0.78));
+    linear-gradient(180deg, rgba(15, 27, 24, 0.92), rgba(7, 17, 15, 0.78)) !important;
 }
 
 :root[data-theme='dark'] .analysis-heading h1,
 :root[data-theme='dark'] .analysis-steps .active b,
 :root[data-theme='dark'] .analysis-meta b,
 :root[data-theme='dark'] .analysis-brand-row .brand-mark {
-  color: var(--ink);
+  color: var(--ink) !important;
 }
 
 :root[data-theme='dark'] .analysis-steps li {
-  color: rgba(245, 250, 247, 0.56);
+  color: rgba(245, 250, 247, 0.56) !important;
 }
 
 :root[data-theme='dark'] .analysis-showcase {
   background:
     radial-gradient(circle at 50% 94%, rgba(255, 191, 105, 0.1), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025)) !important;
 }
 
 :root[data-theme='dark'] .analysis-callout,
 :root[data-theme='dark'] .data-flow span {
-  color: var(--ink);
-  background: rgba(15, 27, 24, 0.94);
-  border-color: rgba(255, 191, 105, 0.24);
+  color: var(--ink) !important;
+  background: rgba(15, 27, 24, 0.94) !important;
+  border-color: rgba(255, 191, 105, 0.24) !important;
 }
 
 :root[data-theme='dark'] .analysis-callout p {
-  color: var(--ink);
+  color: var(--ink) !important;
 }
 
 :root[data-theme='dark'] .ai-partner-pill {
-  color: var(--ink);
-  background: rgba(22, 199, 183, 0.13);
-  border: 1px solid rgba(22, 199, 183, 0.22);
+  color: var(--ink) !important;
+  background: rgba(22, 199, 183, 0.13) !important;
+  border: 1px solid rgba(22, 199, 183, 0.22) !important;
 }
 
 /* Dashboard contrast checks */
@@ -185,7 +185,7 @@ body,
   background:
     radial-gradient(circle at 48% 74%, rgba(255, 191, 105, 0.12), transparent 30%),
     radial-gradient(circle at 18% 12%, rgba(22, 199, 183, 0.12), transparent 28%),
-    linear-gradient(135deg, rgba(7, 17, 15, 0.98), rgba(10, 20, 18, 0.86));
+    linear-gradient(135deg, rgba(7, 17, 15, 0.98), rgba(10, 20, 18, 0.86)) !important;
 }
 
 :root[data-theme='dark'] .dashboard-canvas,
@@ -198,14 +198,14 @@ body,
 :root[data-theme='dark'] .reminder-card,
 :root[data-theme='dark'] .studio-note,
 :root[data-theme='dark'] .dashboard-sheet-preview {
-  background: var(--readable-card);
-  border-color: var(--readable-border);
+  background: var(--readable-card) !important;
+  border-color: var(--readable-border) !important;
 }
 
 :root[data-theme='dark'] .pilot-main {
   background:
     radial-gradient(circle at 86% 12%, rgba(255, 191, 105, 0.08), transparent 26%),
-    linear-gradient(180deg, rgba(15, 27, 24, 0.82), rgba(7, 17, 15, 0.78));
+    linear-gradient(180deg, rgba(15, 27, 24, 0.82), rgba(7, 17, 15, 0.78)) !important;
 }
 
 :root[data-theme='dark'] .pilot-topbar h1,
@@ -214,44 +214,44 @@ body,
 :root[data-theme='dark'] .order-row b,
 :root[data-theme='dark'] .import-box b,
 :root[data-theme='dark'] .studio-note span {
-  color: var(--ink);
+  color: var(--ink) !important;
 }
 
 :root[data-theme='dark'] .kpi-card.dark {
-  color: var(--on-primary);
-  background: linear-gradient(145deg, #073f3a, #092b28);
-  border-color: rgba(255, 191, 105, 0.24);
+  color: var(--on-primary) !important;
+  background: linear-gradient(145deg, #073f3a, #092b28) !important;
+  border-color: rgba(255, 191, 105, 0.24) !important;
 }
 
 :root[data-theme='dark'] .calendar-row em {
-  color: var(--primary-2);
-  background: rgba(22, 199, 183, 0.12);
+  color: var(--primary-2) !important;
+  background: rgba(22, 199, 183, 0.12) !important;
 }
 
 :root[data-theme='dark'] .calendar-row em.warning,
 :root[data-theme='dark'] .order-row em,
 :root[data-theme='dark'] .reminder-card b {
-  color: var(--gold);
+  color: var(--gold) !important;
 }
 
 :root[data-theme='dark'] .download-actions button:nth-child(2) {
-  color: #063f3a;
+  color: #063f3a !important;
 }
 
 @media (max-width: 720px) {
   .app-floating-utilities {
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    justify-content: center;
-    max-width: none;
-    border-radius: 26px;
+    top: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    justify-content: center !important;
+    max-width: none !important;
+    border-radius: 26px !important;
   }
 
   .app-floating-utilities .utility-btn {
-    min-width: 0;
-    flex: 1;
-    padding-inline: 10px;
-    font-size: 12px;
+    min-width: 0 !important;
+    flex: 1 !important;
+    padding-inline: 10px !important;
+    font-size: 12px !important;
   }
 }
