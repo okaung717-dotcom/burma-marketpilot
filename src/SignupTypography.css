@@ -3,3 +3,10 @@
   letter-spacing: 0;
   word-spacing: 0.1em;
 }
+
+:root[data-theme='light'] .premium-chip-row .chip.chip-active {
+  color: #ffffff !important;
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 12px 24px rgba(0, 97, 89, 0.13) !important;
+}
