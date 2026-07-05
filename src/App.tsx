@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import AnalysisLoadingPage from './AnalysisLoading';
 import DashboardExperience from './DashboardExperience';
 import type { BusinessDraft, ProductDraft, SetupDraft } from './types';
@@ -170,7 +170,7 @@ export default function App() {
     setScreen('analyzing');
   }
 
-  function handleSignup(event: React.FormEvent<HTMLFormElement>) {
+  function handleSignup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!signupReady) {
       setAuthError(copy.error);
