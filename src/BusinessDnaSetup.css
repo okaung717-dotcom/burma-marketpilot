@@ -4,3 +4,492 @@
   padding-top: clamp(42px, 5vw, 68px);
   padding-bottom: 154px;
 }
+
+.business-dna-page .page-header {
+  margin-bottom: 34px;
+}
+
+.business-dna-page .page-header h1 {
+  max-width: 980px;
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 0.92;
+}
+
+.business-dna-page .page-header p {
+  max-width: 760px;
+}
+
+.eyebrow.compact {
+  letter-spacing: 0.12em;
+}
+
+.eyebrow.compact::before,
+.eyebrow.compact::after {
+  width: 18px;
+}
+
+.dna-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 42px);
+  margin-bottom: 28px;
+  border-radius: 34px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dna-overview::after {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -150px;
+  top: -180px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 185, 87, 0.24), transparent 68%);
+  pointer-events: none;
+}
+
+.dna-overview > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dna-overview h2 {
+  margin: 14px 0 12px;
+  max-width: 720px;
+  font-family: Manrope, sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+}
+
+.dna-overview p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.setup-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.setup-metrics div {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px;
+  border: 1px solid rgba(0, 97, 89, 0.1);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.setup-metrics b {
+  font-family: Manrope, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.06em;
+}
+
+.setup-metrics span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.dna-command-panel,
+.management-panel,
+.product-universe-panel {
+  padding: clamp(28px, 4vw, 42px);
+  margin-bottom: 28px;
+}
+
+.dna-command-panel::after,
+.product-universe-panel::after {
+  content: '';
+  position: absolute;
+  inset: auto -120px -180px auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: rgba(0, 97, 89, 0.045);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.identity-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 34px);
+  align-items: start;
+}
+
+.brand-upload-card {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.logo-upload-zone {
+  min-height: 290px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  color: var(--primary);
+  border: 1.5px dashed rgba(0, 97, 89, 0.3);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(223, 245, 240, 0.72), rgba(255, 255, 255, 0.74)), radial-gradient(circle at 50% 0%, rgba(255, 185, 87, 0.2), transparent 48%);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.logo-upload-zone:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 97, 89, 0.52);
+  box-shadow: 0 24px 60px rgba(0, 97, 89, 0.12);
+}
+
+.logo-upload-zone input {
+  display: none;
+}
+
+.logo-upload-zone > span {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  color: var(--surface);
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  font-size: 32px;
+  font-weight: 900;
+  box-shadow: 0 18px 34px rgba(0, 97, 89, 0.22);
+}
+
+.logo-upload-zone strong,
+.logo-upload-zone small {
+  display: block;
+}
+
+.logo-upload-zone strong {
+  color: var(--ink);
+  font-family: Manrope, sans-serif;
+  font-size: 18px;
+}
+
+.logo-upload-zone small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.logo-upload-zone.has-logo {
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border-style: solid;
+}
+
+.logo-upload-zone img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.brand-preview-name {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(0, 97, 89, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.brand-preview-name > span {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--primary);
+  background: var(--teal-soft);
+  font-family: Manrope, sans-serif;
+  font-weight: 900;
+}
+
+.brand-preview-name b,
+.brand-preview-name small {
+  display: block;
+}
+
+.brand-preview-name small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.brand-fields {
+  min-width: 0;
+}
+
+.business-dna-page input,
+.business-dna-page textarea {
+  border-color: rgba(92, 103, 101, 0.22);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.business-dna-page textarea {
+  min-height: 118px;
+}
+
+.business-dna-page .textarea-tall {
+  min-height: 148px;
+}
+
+.premium-chip-row .chip {
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.management-panel {
+  border-color: rgba(87, 91, 137, 0.12);
+}
+
+.management-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary), var(--gold));
+}
+
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.management-grid .field {
+  margin-top: 0;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
+}
+
+.add-product-btn {
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid rgba(0, 97, 89, 0.14);
+  border-radius: 999px;
+  color: var(--primary);
+  background: rgba(223, 245, 240, 0.72);
+  font-family: Manrope, sans-serif;
+  font-weight: 900;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.add-product-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(223, 245, 240, 0.96);
+  box-shadow: 0 16px 34px rgba(0, 97, 89, 0.12);
+}
+
+.premium-product-stack {
+  gap: 22px;
+}
+
+.premium-product-card {
+  padding: clamp(22px, 3vw, 32px);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(249, 249, 246, 0.76)), radial-gradient(circle at 100% 0%, rgba(255, 185, 87, 0.16), transparent 34%);
+  border-color: rgba(0, 97, 89, 0.1);
+  box-shadow: 0 18px 58px rgba(26, 28, 27, 0.055);
+}
+
+.product-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.product-topline .product-number {
+  margin: 0;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.product-image-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.premium-image-slot {
+  min-height: 128px;
+  aspect-ratio: auto;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  text-align: center;
+  padding: 14px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(223, 245, 240, 0.42));
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.premium-image-slot:first-child {
+  grid-column: 1 / -1;
+  min-height: 196px;
+}
+
+.premium-image-slot:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 97, 89, 0.38);
+  box-shadow: 0 18px 42px rgba(0, 97, 89, 0.1);
+}
+
+.premium-image-slot span {
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.premium-image-slot small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.premium-image-slot.has-image {
+  padding: 0;
+  border-style: solid;
+}
+
+.premium-image-slot img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.product-data-fields .grid-two {
+  gap: 16px;
+}
+
+.product-data-fields .field:first-child,
+.product-data-fields .grid-two .field {
+  margin-top: 0;
+}
+
+.business-dna-page .bottom-nav {
+  width: min(1080px, calc(100% - 32px));
+}
+
+:root[data-theme='dark'] .dna-overview,
+:root[data-theme='dark'] .setup-metrics div,
+:root[data-theme='dark'] .brand-preview-name,
+:root[data-theme='dark'] .premium-product-card {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(226, 242, 236, 0.12);
+}
+
+:root[data-theme='dark'] .logo-upload-zone,
+:root[data-theme='dark'] .premium-image-slot,
+:root[data-theme='dark'] .add-product-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(226, 242, 236, 0.16);
+}
+
+:root[data-theme='dark'] .logo-upload-zone strong {
+  color: var(--ink);
+}
+
+:root[data-theme='dark'] .business-dna-page input,
+:root[data-theme='dark'] .business-dna-page textarea {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(226, 242, 236, 0.16);
+}
+
+@media (max-width: 1020px) {
+  .dna-overview,
+  .identity-layout,
+  .product-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-upload-card {
+    position: static;
+    grid-template-columns: minmax(260px, 340px) 1fr;
+    align-items: stretch;
+  }
+
+  .logo-upload-zone {
+    min-height: 240px;
+  }
+
+  .product-image-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .premium-image-slot:first-child {
+    grid-column: auto;
+    min-height: 128px;
+  }
+}
+
+@media (max-width: 720px) {
+  .business-dna-page {
+    padding-bottom: 190px;
+  }
+
+  .dna-overview,
+  .brand-upload-card,
+  .management-grid,
+  .setup-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-image-slot:first-child,
+  .premium-image-slot {
+    min-height: 180px;
+  }
+
+  .add-product-btn {
+    width: 100%;
+  }
+}
