@@ -271,10 +271,55 @@ export default function App() {
     });
   }
 
-  return <div className={`app-shell theme-${theme}`}><div className="progress-track"><span style={{ width: `${progress}%` }} /></div><div className="ambient ambient-one" /><div className="ambient ambient-two" />
-    {screen === 'signup' ? <main className={`signup-page signup-lang-${language}`} lang={language === 'my' ? 'my' : 'en'}><div className="signup-topline"><BrandMark /><div className="utility-bar"><button className="utility-btn" type="button" onClick={() => setLanguage(language === 'en' ? 'my' : 'en')} aria-label="Switch language">{copy.language}</button><button className="utility-btn" type="button" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label="Toggle dark mode">{theme === 'light' ? copy.themeDark : copy.themeLight}</button></div></div><section className="signup-layout"><div className="hero-copy"><span className="eyebrow">{copy.eyebrow}</span><h1>{copy.title}</h1><p>{copy.description}</p><div className="service-stack" aria-label={copy.overviewLabel}>{copy.services.map((service) => <article className="service-card" key={service.title}><span>{service.badge}</span><div><b>{service.title}</b><p>{service.body}</p></div></article>)}</div></div><section className="auth-card glass"><div className="card-head center"><span className="mini-orbit">•</span><h2>{copy.authTitle}</h2><p>{copy.authBody}</p></div><form className="auth-form" onSubmit={handleSignup}><label className="field email-field"><span className="field-label">{copy.email}</span><input value={auth.email} onChange={(event) => { setAuth({ ...auth, email: event.target.value }); if (authError) setAuthError(''); }} placeholder={copy.emailPlaceholder} type="email" inputMode="email" autoComplete="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" /><small className="email-helper">{copy.emailHelp} <a className="email-create-link" href="https://accounts.google.com/signup" target="_blank" rel="noreferrer">{copy.emailCreate}</a></small></label><label className="field"><span className="field-label">{copy.password}</span><div className="password-wrap"><input value={auth.password} onChange={(event) => { setAuth({ ...auth, password: event.target.value }); if (authError) setAuthError(''); }} placeholder={copy.passwordPlaceholder} type={passwordVisible ? 'text' : 'password'} autoComplete="new-password" /><button type="button" onClick={() => setPasswordVisible((current) => !current)}>{passwordVisible ? copy.hide : copy.show}</button></div></label>{authError ? <p className="auth-error">{authError}</p> : <p className="auth-security">{copy.saved}</p>}<button className="primary-btn full" type="submit" disabled={!signupReady}>{copy.submit}</button></form></section></section></main> : null}
+  function handleGlobalBack() {
+    if (screen === 'step1') setScreen('signup');
+    if (screen === 'step2') setScreen('step1');
+    if (screen === 'analyzing') setScreen('step2');
+    if (screen === 'dashboardOpening' || screen === 'dashboard') setScreen('step1');
+  }
 
-    {screen === 'step1' ? <main className="page-container business-dna-page"><Header step="Step 1 of 2" title="Business DNA Setup" subtitle="Brand Assets, Product Data and Management Intelligence" />
+  return <div className={`app-shell theme-${theme}`} lang={language === 'my' ? 'my' : 'en'}>
+    <div className="progress-track"><span style={{ width: `${progress}%` }} /></div>
+    <div className="ambient ambient-one" />
+    <div className="ambient ambient-two" />
+
+    {screen !== 'signup' ? <div className="app-floating-utilities utility-bar" aria-label="Page controls">
+      <button className="utility-btn utility-back-btn" type="button" onClick={handleGlobalBack}>{language === 'my' ? 'နောက်သို့' : 'Back'}</button>
+      <button className="utility-btn" type="button" onClick={() => setLanguage(language === 'en' ? 'my' : 'en')} aria-label="Switch language">{copy.language}</button>
+      <button className="utility-btn" type="button" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label="Toggle dark mode">{theme === 'light' ? copy.themeDark : copy.themeLight}</button>
+    </div> : null}
+
+    {screen === 'signup' ? <main className={`signup-page signup-lang-${language}`} lang={language === 'my' ? 'my' : 'en'}>
+      <div className="signup-topline">
+        <BrandMark />
+        <div className="utility-bar">
+          <button className="utility-btn" type="button" onClick={() => setLanguage(language === 'en' ? 'my' : 'en')} aria-label="Switch language">{copy.language}</button>
+          <button className="utility-btn" type="button" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label="Toggle dark mode">{theme === 'light' ? copy.themeDark : copy.themeLight}</button>
+        </div>
+      </div>
+      <section className="signup-layout">
+        <div className="hero-copy">
+          <span className="eyebrow">{copy.eyebrow}</span>
+          <h1>{copy.title}</h1>
+          <p>{copy.description}</p>
+          <div className="service-stack" aria-label={copy.overviewLabel}>
+            {copy.services.map((service) => <article className="service-card" key={service.title}><span>{service.badge}</span><div><b>{service.title}</b><p>{service.body}</p></div></article>)}
+          </div>
+        </div>
+        <section className="auth-card glass">
+          <div className="card-head center"><span className="mini-orbit">•</span><h2>{copy.authTitle}</h2><p>{copy.authBody}</p></div>
+          <form className="auth-form" onSubmit={handleSignup}>
+            <label className="field email-field"><span className="field-label">{copy.email}</span><input value={auth.email} onChange={(event) => { setAuth({ ...auth, email: event.target.value }); if (authError) setAuthError(''); }} placeholder={copy.emailPlaceholder} type="email" inputMode="email" autoComplete="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" /><small className="email-helper">{copy.emailHelp} <a className="email-create-link" href="https://accounts.google.com/signup" target="_blank" rel="noreferrer">{copy.emailCreate}</a></small></label>
+            <label className="field"><span className="field-label">{copy.password}</span><div className="password-wrap"><input value={auth.password} onChange={(event) => { setAuth({ ...auth, password: event.target.value }); if (authError) setAuthError(''); }} placeholder={copy.passwordPlaceholder} type={passwordVisible ? 'text' : 'password'} autoComplete="new-password" /><button type="button" onClick={() => setPasswordVisible((current) => !current)}>{passwordVisible ? copy.hide : copy.show}</button></div></label>
+            {authError ? <p className="auth-error">{authError}</p> : <p className="auth-security">{copy.saved}</p>}
+            <button className="primary-btn full" type="submit" disabled={!signupReady}>{copy.submit}</button>
+          </form>
+        </section>
+      </section>
+    </main> : null}
+
+    {screen === 'step1' ? <main className="page-container business-dna-page">
+      <Header step="Step 1 of 2" title="Business DNA Setup" subtitle="Brand Assets, Product Data and Management Intelligence" />
       <section className="dna-overview glass">
         <div>
           <span className="eyebrow compact">Real business workspace</span>
@@ -371,7 +416,23 @@ export default function App() {
       <BottomNav backLabel="Back" nextLabel="Next" onBack={() => setScreen('signup')} onNext={() => setScreen('step2')} />
     </main> : null}
 
-    {screen === 'step2' ? <main className="page-container step-two"><Header step="Step 2 of 2" title="Business DNA Setup" subtitle="Channels and Goals" /><section className="panel glass platform-panel"><div className="section-head"><div><h2>Platform Integrations</h2><p>Select the channels your business uses.</p></div></div><div className="platform-grid">{platforms.map((platform) => <button key={platform} className={`platform-card ${setup.connectedPlatforms.includes(platform) ? 'connected' : ''}`} type="button" onClick={() => setSetup({ ...setup, connectedPlatforms: toggle(setup.connectedPlatforms, platform) })}><span className="platform-icon">{platform.slice(0, 1)}</span><span><b>{platform}</b><small>{setup.connectedPlatforms.includes(platform) ? 'Connected' : 'Connect account'}</small></span><em>{setup.connectedPlatforms.includes(platform) ? 'on' : 'Connect'}</em></button>)}</div></section><section className="panel glass"><div className="section-head"><div><h2>Posting Habits and Goals</h2><p>Help us tailor your AI content calendar pacing.</p></div></div><div className="preference-block"><strong>Posting frequency</strong><div className="chip-row">{frequencies.map((item) => <Chip key={item} label={item} active={setup.postingFrequency === item} onClick={() => setSetup({ ...setup, postingFrequency: item })} />)}</div></div><div className="preference-block"><strong>Primary AI assistance needed</strong><div className="chip-row">{assistanceOptions.map((item) => <Chip key={item} label={item} active={setup.assistance.includes(item)} onClick={() => setSetup({ ...setup, assistance: toggle(setup.assistance, item) })} />)}</div></div></section><section className="ready-note"><span>*</span><p><b>Almost Ready</b><br />Press Complete Setup to send your Business DNA into the AI analysis animation.</p></section><BottomNav backLabel="Back to Step 1" nextLabel="Complete Setup" onBack={() => setScreen('step1')} onNext={startAnalysis} /></main> : null}
+    {screen === 'step2' ? <main className="page-container step-two">
+      <Header step="Step 2 of 2" title="Business DNA Setup" subtitle="Channels and Goals" />
+      <section className="panel glass platform-panel">
+        <div className="section-head"><div><h2>Platform Integrations</h2><p>Select the channels your business uses.</p></div></div>
+        <div className="platform-grid">
+          {platforms.map((platform) => <button key={platform} className={`platform-card ${setup.connectedPlatforms.includes(platform) ? 'connected' : ''}`} type="button" onClick={() => setSetup({ ...setup, connectedPlatforms: toggle(setup.connectedPlatforms, platform) })}><span className="platform-icon">{platform.slice(0, 1)}</span><span><b>{platform}</b><small>{setup.connectedPlatforms.includes(platform) ? 'Connected' : 'Connect account'}</small></span><em>{setup.connectedPlatforms.includes(platform) ? 'on' : 'Connect'}</em></button>)}
+        </div>
+      </section>
+      <section className="panel glass">
+        <div className="section-head"><div><h2>Posting Habits and Goals</h2><p>Help us tailor your AI content calendar pacing.</p></div></div>
+        <div className="preference-block"><strong>Posting frequency</strong><div className="chip-row">{frequencies.map((item) => <Chip key={item} label={item} active={setup.postingFrequency === item} onClick={() => setSetup({ ...setup, postingFrequency: item })} />)}</div></div>
+        <div className="preference-block"><strong>Primary AI assistance needed</strong><div className="chip-row">{assistanceOptions.map((item) => <Chip key={item} label={item} active={setup.assistance.includes(item)} onClick={() => setSetup({ ...setup, assistance: toggle(setup.assistance, item) })} />)}</div></div>
+      </section>
+      <section className="ready-note"><span>*</span><p><b>Almost Ready</b><br />Press Complete Setup to send your Business DNA into the AI analysis animation.</p></section>
+      <BottomNav backLabel="Back to Step 1" nextLabel="Complete Setup" onBack={() => setScreen('step1')} onNext={startAnalysis} />
+    </main> : null}
+
     {screen === 'analyzing' ? <AnalysisLoadingPage stage={analysisStage} remaining={analysisRemaining} ready={analysisReady} saving={false} business={business} setup={setup} onOpen={() => setScreen('dashboardOpening')} /> : null}
     {screen === 'dashboardOpening' || screen === 'dashboard' ? <DashboardExperience business={business} setup={setup} opening={screen === 'dashboardOpening'} onOpened={() => setScreen('dashboard')} onEdit={() => setScreen('step1')} /> : null}
   </div>;
