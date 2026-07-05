@@ -6,6 +6,9 @@ export type ProductDraft = {
   category: string;
   price: string;
   usp: string;
+  description: string;
+  stock: string;
+  tags: string;
   images: Array<{
     file?: File;
     previewUrl: string;
@@ -22,6 +25,13 @@ export type BusinessDraft = {
   businessName: string;
   category: string;
   description: string;
+  location: string;
+  targetAudience: string;
+  marketingBudget: string;
+  mainGoal: string;
+  currentPromotion: string;
+  fulfillmentProcess: string;
+  customerPainPoint: string;
   brandVoice: string[];
   products: ProductDraft[];
 };
