@@ -7,6 +7,7 @@ import './SignupEnhancements.css';
 import './SignupTypography.css';
 import './SignupFit.css';
 import './BusinessDnaSetup.css';
+import './light-mode-fix.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
