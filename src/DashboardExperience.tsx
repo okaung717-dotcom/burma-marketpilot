@@ -33,6 +33,196 @@ type ActionModal = {
 const defaultPlatforms = ['Facebook Page', 'Instagram', 'TikTok', 'Messenger'];
 const noImportedFile = 'No calendar file imported yet';
 
+const interactiveCss = `
+.pilot-nav button {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 18px;
+  color: rgba(255,248,231,.74);
+  background: transparent;
+  font: 800 14px Manrope, sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+.pilot-nav button:hover,
+.pilot-nav button:focus-visible {
+  color: #fff8e7;
+  background: rgba(255,255,255,.09);
+  outline: none;
+  transform: translateX(3px);
+}
+.pilot-nav button.active {
+  color: #fff8e7;
+  background: rgba(0,124,114,.56);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+}
+.kpi-clickable,
+.calendar-row,
+.order-row {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.kpi-clickable:hover,
+.kpi-clickable:focus-visible,
+.calendar-row:hover,
+.calendar-row:focus-visible,
+.order-row:hover,
+.order-row:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(0,124,114,.26);
+  box-shadow: 0 18px 42px rgba(0,97,89,.12);
+  outline: none;
+}
+.automation-flow button {
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0 8px;
+  border: 1px solid rgba(0,97,89,.08);
+  border-radius: 999px;
+  color: var(--primary);
+  background: rgba(255,255,255,.86);
+  font: 900 11px Manrope, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+.automation-flow.is-active button,
+.automation-flow button:hover,
+.automation-flow button:focus-visible {
+  color: #fff8e7;
+  background: var(--primary);
+  outline: none;
+}
+.dashboard-toast {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 120;
+  max-width: min(420px, calc(100vw - 40px));
+  padding: 14px 18px;
+  border-radius: 18px;
+  color: #fff8e7;
+  background: linear-gradient(135deg, #063f3a, #007c72);
+  box-shadow: 0 22px 60px rgba(0,97,89,.24);
+  font: 900 13px Manrope, sans-serif;
+  animation: dashboardToastIn .24s ease both;
+}
+.dashboard-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(3, 21, 19, .32);
+  backdrop-filter: blur(10px);
+}
+.dashboard-modal {
+  width: min(520px, 94vw);
+  position: relative;
+  padding: 28px;
+  border-radius: 28px;
+  color: var(--ink);
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(0,97,89,.13);
+  box-shadow: 0 34px 100px rgba(0,0,0,.24);
+}
+.dashboard-modal h2 {
+  margin: 8px 0 10px;
+  color: #0a2422;
+  font: 900 30px/.96 Manrope, sans-serif;
+  letter-spacing: -.05em;
+}
+.dashboard-modal p,
+.dashboard-modal small {
+  display: block;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.dashboard-modal strong {
+  display: block;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  color: var(--primary);
+  background: rgba(223,245,240,.7);
+  font: 900 14px/1.55 Manrope, sans-serif;
+}
+.modal-eyebrow {
+  color: var(--primary);
+  font: 900 11px Manrope, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.modal-close {
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: 0;
+  border-radius: 14px;
+  color: var(--primary);
+  background: rgba(223,245,240,.8);
+  font: 900 18px Manrope, sans-serif;
+  cursor: pointer;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.modal-actions button {
+  min-height: 42px;
+  flex: 1;
+  border: 0;
+  border-radius: 999px;
+  color: #fff8e7;
+  background: var(--primary);
+  font: 900 12px Manrope, sans-serif;
+  cursor: pointer;
+}
+.modal-actions button:nth-child(2) {
+  color: #063f3a;
+  background: linear-gradient(135deg, #ffdda0, #ffb957);
+}
+:root[data-theme='dark'] .dashboard-modal {
+  color: var(--ink);
+  background: rgba(15,27,24,.96);
+  border-color: rgba(226,242,236,.16);
+}
+:root[data-theme='dark'] .dashboard-modal h2 {
+  color: var(--ink);
+}
+:root[data-theme='dark'] .dashboard-modal strong {
+  color: var(--ink);
+  background: rgba(22,199,183,.12);
+}
+@keyframes dashboardToastIn {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (min-width: 861px) {
+  .pilot-nav button { min-height: 42px; padding: 0 14px; border-radius: 14px; font-size: 13px; }
+  .automation-flow button { min-height: 36px; padding: 0 6px; font-size: 10px; line-height: 1.1; }
+}
+@media (max-width: 720px) {
+  .dashboard-modal-backdrop { padding: 14px; }
+  .dashboard-modal { padding: 22px; border-radius: 24px; }
+  .modal-actions { flex-direction: column; }
+}
+`;
+
 const panelCopy: Record<DashboardPanel, { label: string; title: string; subtitle: string }> = {
   dashboard: {
     label: 'Dashboard',
@@ -94,6 +284,14 @@ export default function DashboardExperience({ business, setup, opening, onOpened
   const productName = product?.name || 'Hero Product';
   const activePlatforms = setup.connectedPlatforms.length ? setup.connectedPlatforms : defaultPlatforms;
   const currentPanel = panelCopy[activePanel];
+
+  useEffect(() => {
+    if (typeof document === 'undefined' || document.getElementById('dashboard-interactive-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'dashboard-interactive-styles';
+    style.textContent = interactiveCss;
+    document.head.appendChild(style);
+  }, []);
 
   useEffect(() => {
     if (!opening) return undefined;
