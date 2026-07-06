@@ -48,6 +48,86 @@ type AppScreen = 'signup' | 'step1' | 'step2' | 'analyzing' | 'dashboardOpening'
 type ThemeMode = 'light' | 'dark';
 type LanguageMode = 'en' | 'my';
 type AuthDraft = { email: string; password: string };
+type ChoiceLabels = Record<string, string>;
+type SetupCopy = {
+  headerTagline: string;
+  step1: {
+    step: string;
+    title: string;
+    subtitle: string;
+    overviewEyebrow: string;
+    overviewTitle: string;
+    overviewBody: string;
+    summaryAria: string;
+    productItems: string;
+    brandVoiceTags: string;
+    businessAsset: string;
+    logoMetric: string;
+    addMetric: string;
+    identityTitle: string;
+    identityBody: string;
+    identityPill: string;
+    logoAlt: string;
+    uploadLogo: string;
+    uploadFormat: string;
+    businessFallback: string;
+    businessName: string;
+    location: string;
+    industry: string;
+    targetCustomers: string;
+    budget: string;
+    description: string;
+    brandVoice: string;
+    managementTitle: string;
+    managementBody: string;
+    managementPill: string;
+    goal: string;
+    offer: string;
+    workflow: string;
+    painPoint: string;
+    productTitle: string;
+    productBody: string;
+    addProduct: string;
+    productPrefix: string;
+    removeProduct: string;
+    productPhoto: string;
+    productName: string;
+    price: string;
+    productCategory: string;
+    stock: string;
+    usp: string;
+    productDetails: string;
+    tags: string;
+    back: string;
+    next: string;
+  };
+  step2: {
+    step: string;
+    title: string;
+    subtitle: string;
+    platformTitle: string;
+    platformBody: string;
+    connected: string;
+    connectAccount: string;
+    on: string;
+    connect: string;
+    postingTitle: string;
+    postingBody: string;
+    frequency: string;
+    assistance: string;
+    readyTitle: string;
+    readyBody: string;
+    back: string;
+    complete: string;
+  };
+  choices: {
+    categories: ChoiceLabels;
+    brandVoices: ChoiceLabels;
+    frequencies: ChoiceLabels;
+    assistance: ChoiceLabels;
+    platforms: ChoiceLabels;
+  };
+};
 
 const signupCopy = {
   en: {
@@ -106,6 +186,202 @@ const signupCopy = {
   }
 };
 
+const setupCopy: Record<LanguageMode, SetupCopy> = {
+  en: {
+    headerTagline: 'Premium, calm, human-made UI for Myanmar online business owners.',
+    step1: {
+      step: 'Step 1 of 2',
+      title: 'Business DNA Setup',
+      subtitle: 'Brand Assets, Product Data and Management Intelligence',
+      overviewEyebrow: 'Real business workspace',
+      overviewTitle: 'Fill everything a professional marketing manager needs before analysis.',
+      overviewBody: 'Logo, business type, products, product pictures, price data, audience, offers, delivery process and management notes are collected in one premium setup page.',
+      summaryAria: 'Business setup summary',
+      productItems: 'Product items',
+      brandVoiceTags: 'Brand voice tags',
+      businessAsset: 'Business asset',
+      logoMetric: 'Logo',
+      addMetric: 'Add',
+      identityTitle: 'Business Identity',
+      identityBody: 'Tell MarketPilot what your business is, who you sell to, and how your brand should sound.',
+      identityPill: 'Core DNA',
+      logoAlt: 'Business logo preview',
+      uploadLogo: 'Upload business logo',
+      uploadFormat: 'PNG, JPG or WebP',
+      businessFallback: 'Your Business',
+      businessName: 'Business Name',
+      location: 'Location / Service Area',
+      industry: 'Industry Category',
+      targetCustomers: 'Target Customers',
+      budget: 'Monthly Marketing Budget',
+      description: 'Business Description',
+      brandVoice: 'Brand Voice',
+      managementTitle: 'Business Management Inputs',
+      managementBody: 'These fields make the AI output useful like a real professional manager, not only a design form.',
+      managementPill: 'Manager Notes',
+      goal: 'Main Business Goal',
+      offer: 'Current Promotion / Offer',
+      workflow: 'Order, Payment and Delivery Workflow',
+      painPoint: 'Customer Pain Point / Reason to Buy',
+      productTitle: 'Product Universe',
+      productBody: 'Add product names, categories, prices, product data, stock details and real product pictures for AI analysis.',
+      addProduct: '+ Add Product',
+      productPrefix: 'Product',
+      removeProduct: 'Remove product',
+      productPhoto: 'Product photo',
+      productName: 'Product Name',
+      price: 'Price',
+      productCategory: 'Product Category',
+      stock: 'Stock / Availability',
+      usp: 'Unique Selling Point',
+      productDetails: 'Product Data / Details',
+      tags: 'Tags / Keywords',
+      back: 'Back',
+      next: 'Next'
+    },
+    step2: {
+      step: 'Step 2 of 2',
+      title: 'Business DNA Setup',
+      subtitle: 'Channels and Goals',
+      platformTitle: 'Platform Integrations',
+      platformBody: 'Select the channels your business uses.',
+      connected: 'Connected',
+      connectAccount: 'Connect account',
+      on: 'on',
+      connect: 'Connect',
+      postingTitle: 'Posting Habits and Goals',
+      postingBody: 'Help us tailor your AI content calendar pacing.',
+      frequency: 'Posting frequency',
+      assistance: 'Primary AI assistance needed',
+      readyTitle: 'Almost Ready',
+      readyBody: 'Press Complete Setup to send your Business DNA into the AI analysis animation.',
+      back: 'Back to Step 1',
+      complete: 'Complete Setup'
+    },
+    choices: {
+      categories: {},
+      brandVoices: {},
+      frequencies: {},
+      assistance: {},
+      platforms: {}
+    }
+  },
+  my: {
+    headerTagline: 'မြန်မာ Online Business Owner များအတွက် Premium၊ Calm၊ Human-made UI။',
+    step1: {
+      step: 'အဆင့် ၁ / ၂',
+      title: 'Business DNA Setup',
+      subtitle: 'Brand Asset၊ Product Data နဲ့ Management Intelligence',
+      overviewEyebrow: 'တကယ့် Business Workspace',
+      overviewTitle: 'Analysis မလုပ်ခင် Professional Marketing Manager လိုအပ်တဲ့အချက်အလက်အားလုံးကို ဖြည့်ပါ။',
+      overviewBody: 'Logo၊ Business အမျိုးအစား၊ Product များ၊ Product ပုံများ၊ စျေးနှုန်း Data၊ Customer Audience၊ Offer၊ Delivery Process နဲ့ Management Note များကို Premium Setup Page တစ်ခုထဲမှာ စုစည်းထားပါတယ်။',
+      summaryAria: 'Business setup summary',
+      productItems: 'Product Item များ',
+      brandVoiceTags: 'Brand Voice Tag များ',
+      businessAsset: 'Business Asset',
+      logoMetric: 'Logo',
+      addMetric: 'ထည့်ရန်',
+      identityTitle: 'Business Identity',
+      identityBody: 'သင့် Business က ဘာလုပ်ငန်းလဲ၊ ဘယ်သူ့ကိုရောင်းလဲ၊ Brand အသံက ဘယ်လိုဖြစ်သင့်လဲဆိုတာ MarketPilot ကိုပြောပါ။',
+      identityPill: 'Core DNA',
+      logoAlt: 'Business logo preview',
+      uploadLogo: 'Business Logo တင်ရန်',
+      uploadFormat: 'PNG, JPG သို့မဟုတ် WebP',
+      businessFallback: 'သင့် Business',
+      businessName: 'Business Name',
+      location: 'Location / Service Area',
+      industry: 'Industry Category',
+      targetCustomers: 'Target Customer များ',
+      budget: 'လစဉ် Marketing Budget',
+      description: 'Business Description',
+      brandVoice: 'Brand Voice',
+      managementTitle: 'Business Management Input များ',
+      managementBody: 'ဒီအချက်အလက်တွေက AI Output ကို Design Form သက်သက်မဟုတ်ဘဲ Real Professional Manager တစ်ယောက်လို အသုံးဝင်အောင်လုပ်ပေးပါတယ်။',
+      managementPill: 'Manager Note များ',
+      goal: 'အဓိက Business Goal',
+      offer: 'လက်ရှိ Promotion / Offer',
+      workflow: 'Order, Payment နဲ့ Delivery Workflow',
+      painPoint: 'Customer Pain Point / ဝယ်သင့်တဲ့အကြောင်းရင်း',
+      productTitle: 'Product Universe',
+      productBody: 'AI Analysis အတွက် Product Name၊ Category၊ Price၊ Product Data၊ Stock Detail နဲ့ Product ပုံအစစ်များကို ထည့်ပါ။',
+      addProduct: '+ Product ထည့်ရန်',
+      productPrefix: 'Product',
+      removeProduct: 'Product ဖယ်ရန်',
+      productPhoto: 'Product ပုံ',
+      productName: 'Product Name',
+      price: 'Price',
+      productCategory: 'Product Category',
+      stock: 'Stock / Availability',
+      usp: 'Unique Selling Point',
+      productDetails: 'Product Data / Details',
+      tags: 'Tag / Keyword များ',
+      back: 'နောက်သို့',
+      next: 'ရှေ့သို့'
+    },
+    step2: {
+      step: 'အဆင့် ၂ / ၂',
+      title: 'Business DNA Setup',
+      subtitle: 'Channel နဲ့ Goal များ',
+      platformTitle: 'Platform Integration များ',
+      platformBody: 'သင့် Business အသုံးပြုနေတဲ့ Channel များကို ရွေးချယ်ပါ။',
+      connected: 'ချိတ်ပြီး',
+      connectAccount: 'Account ချိတ်ရန်',
+      on: 'ဖွင့်ထား',
+      connect: 'ချိတ်ရန်',
+      postingTitle: 'Posting Habit နဲ့ Goal များ',
+      postingBody: 'သင့် AI Content Calendar ရဲ့ Pace ကို ကိုက်ညီအောင် ပြင်ဆင်ပေးနိုင်ဖို့ ကူညီပါ။',
+      frequency: 'Post တင်မည့်အကြိမ်ရေ',
+      assistance: 'အဓိကလိုအပ်တဲ့ AI အကူအညီ',
+      readyTitle: 'အဆင်သင့်ဖြစ်တော့မယ်',
+      readyBody: 'Complete Setup ကိုနှိပ်ပြီး သင့် Business DNA ကို AI Analysis Animation ထဲသို့ပို့ပါ။',
+      back: 'Step 1 သို့ ပြန်သွားရန်',
+      complete: 'Setup ပြီးဆုံးရန်'
+    },
+    choices: {
+      categories: {
+        Fashion: 'ဖက်ရှင်',
+        'F&B': 'အစားအသောက်နှင့် အဖျော်ယမကာ',
+        Beauty: 'အလှအပ',
+        'Tech Services': 'နည်းပညာဝန်ဆောင်မှု',
+        Retail: 'လက်လီရောင်းချမှု',
+        Education: 'ပညာရေး',
+        Health: 'ကျန်းမာရေး',
+        'Home Living': 'အိမ်သုံး / လူနေမှု'
+      },
+      brandVoices: {
+        Premium: 'Premium',
+        Friendly: 'ဖော်ရွေ',
+        Trustworthy: 'ယုံကြည်စိတ်ချရ',
+        Bold: 'ရဲရင့်',
+        'Warm Myanmar': 'နွေးထွေးသော မြန်မာ Tone',
+        'Fast Service': 'မြန်ဆန်သော ဝန်ဆောင်မှု'
+      },
+      frequencies: {
+        Daily: 'နေ့စဉ်',
+        '2-3 Times a Week': 'တစ်ပတ် ၂-၃ ကြိမ်',
+        Weekly: 'တစ်ပတ်တစ်ကြိမ်',
+        Occasionally: 'လိုအပ်သလို'
+      },
+      assistance: {
+        'Content Calendar': 'Content Calendar',
+        'Captions & Copy': 'Caption နဲ့ Copywriting',
+        'Image Generation': 'Image Generation',
+        'Audience Engagement': 'Audience Engagement'
+      },
+      platforms: {
+        'Facebook Page': 'Facebook Page',
+        Instagram: 'Instagram',
+        TikTok: 'TikTok',
+        Messenger: 'Messenger',
+        Viber: 'Viber',
+        Telegram: 'Telegram',
+        Website: 'Website',
+        'Google Business': 'Google Business'
+      }
+    }
+  }
+};
+
 function getStoredTheme(): ThemeMode {
   const stored = window.localStorage.getItem('marketpilot-theme');
   if (stored === 'light' || stored === 'dark') return stored;
@@ -148,6 +424,10 @@ function getStage(ratio: number) {
   return 5;
 }
 
+function getChoiceLabel(labels: ChoiceLabels, value: string) {
+  return labels[value] ?? value;
+}
+
 function BrandMark() {
   return <div className="brand-mark"><span className="brand-icon">MP</span><span>Burma MarketPilot</span><i /></div>;
 }
@@ -171,6 +451,7 @@ export default function App() {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const copy = signupCopy[language];
+  const setupText = setupCopy[language];
   const signupReady = isValidEmail(auth.email) && auth.password.length >= 6;
   const progress = useMemo(() => {
     if (screen === 'signup') return 12;
@@ -319,118 +600,118 @@ export default function App() {
     </main> : null}
 
     {screen === 'step1' ? <main className="page-container business-dna-page">
-      <Header step="Step 1 of 2" title="Business DNA Setup" subtitle="Brand Assets, Product Data and Management Intelligence" />
+      <Header step={setupText.step1.step} title={setupText.step1.title} subtitle={setupText.step1.subtitle} tagline={setupText.headerTagline} />
       <section className="dna-overview glass">
         <div>
-          <span className="eyebrow compact">Real business workspace</span>
-          <h2>Fill everything a professional marketing manager needs before analysis.</h2>
-          <p>Logo, business type, products, product pictures, price data, audience, offers, delivery process and management notes are collected in one premium setup page.</p>
+          <span className="eyebrow compact">{setupText.step1.overviewEyebrow}</span>
+          <h2>{setupText.step1.overviewTitle}</h2>
+          <p>{setupText.step1.overviewBody}</p>
         </div>
-        <div className="setup-metrics" aria-label="Business setup summary">
-          <div><b>{business.products.length}</b><span>Product items</span></div>
-          <div><b>{business.brandVoice.length}</b><span>Brand voice tags</span></div>
-          <div><b>{business.logoPreviewUrl ? 'Logo' : 'Add'}</b><span>Business asset</span></div>
+        <div className="setup-metrics" aria-label={setupText.step1.summaryAria}>
+          <div><b>{business.products.length}</b><span>{setupText.step1.productItems}</span></div>
+          <div><b>{business.brandVoice.length}</b><span>{setupText.step1.brandVoiceTags}</span></div>
+          <div><b>{business.logoPreviewUrl ? setupText.step1.logoMetric : setupText.step1.addMetric}</b><span>{setupText.step1.businessAsset}</span></div>
         </div>
       </section>
 
       <section className="panel glass with-line dna-command-panel">
         <div className="section-head">
-          <div><h2>Business Identity</h2><p>Tell MarketPilot what your business is, who you sell to, and how your brand should sound.</p></div>
-          <span className="pill-soft">Core DNA</span>
+          <div><h2>{setupText.step1.identityTitle}</h2><p>{setupText.step1.identityBody}</p></div>
+          <span className="pill-soft">{setupText.step1.identityPill}</span>
         </div>
         <div className="identity-layout">
           <aside className="brand-upload-card">
             <label className={`logo-upload-zone ${business.logoPreviewUrl ? 'has-logo' : ''}`}>
               <input type="file" accept="image/*" onChange={(event) => handleLogoUpload(event.target.files)} />
-              {business.logoPreviewUrl ? <img src={business.logoPreviewUrl} alt="Business logo preview" /> : <><span>+</span><strong>Upload business logo</strong><small>PNG, JPG or WebP</small></>}
+              {business.logoPreviewUrl ? <img src={business.logoPreviewUrl} alt={setupText.step1.logoAlt} /> : <><span>+</span><strong>{setupText.step1.uploadLogo}</strong><small>{setupText.step1.uploadFormat}</small></>}
             </label>
             <div className="brand-preview-name">
               <span>{business.businessName.slice(0, 2).toUpperCase()}</span>
-              <div><b>{business.businessName || 'Your Business'}</b><small>{business.category} · {business.location}</small></div>
+              <div><b>{business.businessName || setupText.step1.businessFallback}</b><small>{business.category} · {business.location}</small></div>
             </div>
           </aside>
 
           <div className="brand-fields">
             <div className="grid-two">
-              <label className="field"><span className="field-label">Business Name</span><input value={business.businessName} onChange={(event) => setBusiness({ ...business, businessName: event.target.value })} /></label>
-              <label className="field"><span className="field-label">Location / Service Area</span><input value={business.location} onChange={(event) => setBusiness({ ...business, location: event.target.value })} /></label>
+              <label className="field"><span className="field-label">{setupText.step1.businessName}</span><input value={business.businessName} onChange={(event) => setBusiness({ ...business, businessName: event.target.value })} /></label>
+              <label className="field"><span className="field-label">{setupText.step1.location}</span><input value={business.location} onChange={(event) => setBusiness({ ...business, location: event.target.value })} /></label>
             </div>
-            <div className="field"><span className="field-label">Industry Category</span><div className="chip-row premium-chip-row">{categories.map((item) => <Chip key={item} label={item} active={business.category === item} onClick={() => setBusiness({ ...business, category: item })} />)}</div></div>
+            <div className="field"><span className="field-label">{setupText.step1.industry}</span><div className="chip-row premium-chip-row">{categories.map((item) => <Chip key={item} label={getChoiceLabel(setupText.choices.categories, item)} active={business.category === item} onClick={() => setBusiness({ ...business, category: item })} />)}</div></div>
             <div className="grid-two">
-              <label className="field"><span className="field-label">Target Customers</span><input value={business.targetAudience} onChange={(event) => setBusiness({ ...business, targetAudience: event.target.value })} /></label>
-              <label className="field"><span className="field-label">Monthly Marketing Budget</span><input value={business.marketingBudget} onChange={(event) => setBusiness({ ...business, marketingBudget: event.target.value })} /></label>
+              <label className="field"><span className="field-label">{setupText.step1.targetCustomers}</span><input value={business.targetAudience} onChange={(event) => setBusiness({ ...business, targetAudience: event.target.value })} /></label>
+              <label className="field"><span className="field-label">{setupText.step1.budget}</span><input value={business.marketingBudget} onChange={(event) => setBusiness({ ...business, marketingBudget: event.target.value })} /></label>
             </div>
-            <label className="field"><span className="field-label">Business Description</span><textarea className="textarea-tall" value={business.description} onChange={(event) => setBusiness({ ...business, description: event.target.value })} /></label>
-            <div className="field"><span className="field-label">Brand Voice</span><div className="chip-row premium-chip-row">{brandVoices.map((voice) => <Chip key={voice} label={voice} active={business.brandVoice.includes(voice)} onClick={() => setBusiness({ ...business, brandVoice: toggle(business.brandVoice, voice) })} />)}</div></div>
+            <label className="field"><span className="field-label">{setupText.step1.description}</span><textarea className="textarea-tall" value={business.description} onChange={(event) => setBusiness({ ...business, description: event.target.value })} /></label>
+            <div className="field"><span className="field-label">{setupText.step1.brandVoice}</span><div className="chip-row premium-chip-row">{brandVoices.map((voice) => <Chip key={voice} label={getChoiceLabel(setupText.choices.brandVoices, voice)} active={business.brandVoice.includes(voice)} onClick={() => setBusiness({ ...business, brandVoice: toggle(business.brandVoice, voice) })} />)}</div></div>
           </div>
         </div>
       </section>
 
       <section className="panel glass management-panel">
         <div className="section-head">
-          <div><h2>Business Management Inputs</h2><p>These fields make the AI output useful like a real professional manager, not only a design form.</p></div>
-          <span className="pill-soft">Manager Notes</span>
+          <div><h2>{setupText.step1.managementTitle}</h2><p>{setupText.step1.managementBody}</p></div>
+          <span className="pill-soft">{setupText.step1.managementPill}</span>
         </div>
         <div className="management-grid">
-          <label className="field"><span className="field-label">Main Business Goal</span><input value={business.mainGoal} onChange={(event) => setBusiness({ ...business, mainGoal: event.target.value })} /></label>
-          <label className="field"><span className="field-label">Current Promotion / Offer</span><input value={business.currentPromotion} onChange={(event) => setBusiness({ ...business, currentPromotion: event.target.value })} /></label>
-          <label className="field field-wide"><span className="field-label">Order, Payment and Delivery Workflow</span><textarea value={business.fulfillmentProcess} onChange={(event) => setBusiness({ ...business, fulfillmentProcess: event.target.value })} /></label>
-          <label className="field field-wide"><span className="field-label">Customer Pain Point / Reason to Buy</span><textarea value={business.customerPainPoint} onChange={(event) => setBusiness({ ...business, customerPainPoint: event.target.value })} /></label>
+          <label className="field"><span className="field-label">{setupText.step1.goal}</span><input value={business.mainGoal} onChange={(event) => setBusiness({ ...business, mainGoal: event.target.value })} /></label>
+          <label className="field"><span className="field-label">{setupText.step1.offer}</span><input value={business.currentPromotion} onChange={(event) => setBusiness({ ...business, currentPromotion: event.target.value })} /></label>
+          <label className="field field-wide"><span className="field-label">{setupText.step1.workflow}</span><textarea value={business.fulfillmentProcess} onChange={(event) => setBusiness({ ...business, fulfillmentProcess: event.target.value })} /></label>
+          <label className="field field-wide"><span className="field-label">{setupText.step1.painPoint}</span><textarea value={business.customerPainPoint} onChange={(event) => setBusiness({ ...business, customerPainPoint: event.target.value })} /></label>
         </div>
       </section>
 
       <section className="panel glass with-line secondary-line product-universe-panel">
         <div className="section-head">
-          <div><h2>Product Universe</h2><p>Add product names, categories, prices, product data, stock details and real product pictures for AI analysis.</p></div>
-          <button className="add-product-btn" type="button" onClick={addProduct}>+ Add Product</button>
+          <div><h2>{setupText.step1.productTitle}</h2><p>{setupText.step1.productBody}</p></div>
+          <button className="add-product-btn" type="button" onClick={addProduct}>{setupText.step1.addProduct}</button>
         </div>
         <div className="product-stack premium-product-stack">
           {business.products.map((item, index) => <article className="product-card premium-product-card" key={item.id}>
-            <div className="product-topline"><span className="product-number">Product {String(index + 1).padStart(2, '0')}</span>{business.products.length > 1 ? <button className="icon-btn danger" type="button" onClick={() => removeProduct(item.id)} aria-label="Remove product">×</button> : null}</div>
+            <div className="product-topline"><span className="product-number">{setupText.step1.productPrefix} {String(index + 1).padStart(2, '0')}</span>{business.products.length > 1 ? <button className="icon-btn danger" type="button" onClick={() => removeProduct(item.id)} aria-label={setupText.step1.removeProduct}>×</button> : null}</div>
             <div className="product-layout">
               <div className="product-image-panel">
                 {productSlots.map((slot) => {
                   const image = item.images[slot];
                   return <label className={`image-slot premium-image-slot ${image ? 'has-image' : ''}`} key={`${item.id}-${slot}`}>
                     <input type="file" accept="image/*" onChange={(event) => handleProductImageUpload(item.id, slot, event.target.files)} />
-                    {image ? <img src={image.previewUrl} alt={`${item.name} product preview ${slot + 1}`} /> : <><span>+</span><small>Product photo {slot + 1}</small></>}
+                    {image ? <img src={image.previewUrl} alt={`${item.name} product preview ${slot + 1}`} /> : <><span>+</span><small>{setupText.step1.productPhoto} {slot + 1}</small></>}
                   </label>;
                 })}
               </div>
               <div className="product-data-fields">
                 <div className="grid-two">
-                  <label className="field"><span className="field-label">Product Name</span><input value={item.name} onChange={(event) => updateProduct(item.id, { name: event.target.value })} /></label>
-                  <label className="field"><span className="field-label">Price</span><input value={item.price} onChange={(event) => updateProduct(item.id, { price: event.target.value })} /></label>
-                  <label className="field"><span className="field-label">Product Category</span><input value={item.category} onChange={(event) => updateProduct(item.id, { category: event.target.value })} /></label>
-                  <label className="field"><span className="field-label">Stock / Availability</span><input value={item.stock} onChange={(event) => updateProduct(item.id, { stock: event.target.value })} /></label>
+                  <label className="field"><span className="field-label">{setupText.step1.productName}</span><input value={item.name} onChange={(event) => updateProduct(item.id, { name: event.target.value })} /></label>
+                  <label className="field"><span className="field-label">{setupText.step1.price}</span><input value={item.price} onChange={(event) => updateProduct(item.id, { price: event.target.value })} /></label>
+                  <label className="field"><span className="field-label">{setupText.step1.productCategory}</span><input value={item.category} onChange={(event) => updateProduct(item.id, { category: event.target.value })} /></label>
+                  <label className="field"><span className="field-label">{setupText.step1.stock}</span><input value={item.stock} onChange={(event) => updateProduct(item.id, { stock: event.target.value })} /></label>
                 </div>
-                <label className="field"><span className="field-label">Unique Selling Point</span><input value={item.usp} onChange={(event) => updateProduct(item.id, { usp: event.target.value })} /></label>
-                <label className="field"><span className="field-label">Product Data / Details</span><textarea value={item.description} onChange={(event) => updateProduct(item.id, { description: event.target.value })} /></label>
-                <label className="field"><span className="field-label">Tags / Keywords</span><input value={item.tags} onChange={(event) => updateProduct(item.id, { tags: event.target.value })} /></label>
+                <label className="field"><span className="field-label">{setupText.step1.usp}</span><input value={item.usp} onChange={(event) => updateProduct(item.id, { usp: event.target.value })} /></label>
+                <label className="field"><span className="field-label">{setupText.step1.productDetails}</span><textarea value={item.description} onChange={(event) => updateProduct(item.id, { description: event.target.value })} /></label>
+                <label className="field"><span className="field-label">{setupText.step1.tags}</span><input value={item.tags} onChange={(event) => updateProduct(item.id, { tags: event.target.value })} /></label>
               </div>
             </div>
           </article>)}
         </div>
       </section>
 
-      <BottomNav backLabel="Back" nextLabel="Next" onBack={() => setScreen('signup')} onNext={() => setScreen('step2')} />
+      <BottomNav backLabel={setupText.step1.back} nextLabel={setupText.step1.next} onBack={() => setScreen('signup')} onNext={() => setScreen('step2')} />
     </main> : null}
 
     {screen === 'step2' ? <main className="page-container step-two">
-      <Header step="Step 2 of 2" title="Business DNA Setup" subtitle="Channels and Goals" />
+      <Header step={setupText.step2.step} title={setupText.step2.title} subtitle={setupText.step2.subtitle} tagline={setupText.headerTagline} />
       <section className="panel glass platform-panel">
-        <div className="section-head"><div><h2>Platform Integrations</h2><p>Select the channels your business uses.</p></div></div>
+        <div className="section-head"><div><h2>{setupText.step2.platformTitle}</h2><p>{setupText.step2.platformBody}</p></div></div>
         <div className="platform-grid">
-          {platforms.map((platform) => <button key={platform} className={`platform-card ${setup.connectedPlatforms.includes(platform) ? 'connected' : ''}`} type="button" onClick={() => setSetup({ ...setup, connectedPlatforms: toggle(setup.connectedPlatforms, platform) })}><span className="platform-icon">{platform.slice(0, 1)}</span><span><b>{platform}</b><small>{setup.connectedPlatforms.includes(platform) ? 'Connected' : 'Connect account'}</small></span><em>{setup.connectedPlatforms.includes(platform) ? 'on' : 'Connect'}</em></button>)}
+          {platforms.map((platform) => <button key={platform} className={`platform-card ${setup.connectedPlatforms.includes(platform) ? 'connected' : ''}`} type="button" onClick={() => setSetup({ ...setup, connectedPlatforms: toggle(setup.connectedPlatforms, platform) })}><span className="platform-icon">{platform.slice(0, 1)}</span><span><b>{getChoiceLabel(setupText.choices.platforms, platform)}</b><small>{setup.connectedPlatforms.includes(platform) ? setupText.step2.connected : setupText.step2.connectAccount}</small></span><em>{setup.connectedPlatforms.includes(platform) ? setupText.step2.on : setupText.step2.connect}</em></button>)}
         </div>
       </section>
       <section className="panel glass">
-        <div className="section-head"><div><h2>Posting Habits and Goals</h2><p>Help us tailor your AI content calendar pacing.</p></div></div>
-        <div className="preference-block"><strong>Posting frequency</strong><div className="chip-row">{frequencies.map((item) => <Chip key={item} label={item} active={setup.postingFrequency === item} onClick={() => setSetup({ ...setup, postingFrequency: item })} />)}</div></div>
-        <div className="preference-block"><strong>Primary AI assistance needed</strong><div className="chip-row">{assistanceOptions.map((item) => <Chip key={item} label={item} active={setup.assistance.includes(item)} onClick={() => setSetup({ ...setup, assistance: toggle(setup.assistance, item) })} />)}</div></div>
+        <div className="section-head"><div><h2>{setupText.step2.postingTitle}</h2><p>{setupText.step2.postingBody}</p></div></div>
+        <div className="preference-block"><strong>{setupText.step2.frequency}</strong><div className="chip-row">{frequencies.map((item) => <Chip key={item} label={getChoiceLabel(setupText.choices.frequencies, item)} active={setup.postingFrequency === item} onClick={() => setSetup({ ...setup, postingFrequency: item })} />)}</div></div>
+        <div className="preference-block"><strong>{setupText.step2.assistance}</strong><div className="chip-row">{assistanceOptions.map((item) => <Chip key={item} label={getChoiceLabel(setupText.choices.assistance, item)} active={setup.assistance.includes(item)} onClick={() => setSetup({ ...setup, assistance: toggle(setup.assistance, item) })} />)}</div></div>
       </section>
-      <section className="ready-note"><span>*</span><p><b>Almost Ready</b><br />Press Complete Setup to send your Business DNA into the AI analysis animation.</p></section>
-      <BottomNav backLabel="Back to Step 1" nextLabel="Complete Setup" onBack={() => setScreen('step1')} onNext={startAnalysis} />
+      <section className="ready-note"><span>*</span><p><b>{setupText.step2.readyTitle}</b><br />{setupText.step2.readyBody}</p></section>
+      <BottomNav backLabel={setupText.step2.back} nextLabel={setupText.step2.complete} onBack={() => setScreen('step1')} onNext={startAnalysis} />
     </main> : null}
 
     {screen === 'analyzing' ? <AnalysisLoadingPage stage={analysisStage} remaining={analysisRemaining} ready={analysisReady} saving={false} business={business} setup={setup} onOpen={() => setScreen('dashboardOpening')} /> : null}
@@ -438,8 +719,8 @@ export default function App() {
   </div>;
 }
 
-function Header({ step, title, subtitle }: { step: string; title: string; subtitle: string }) {
-  return <header className="page-header"><BrandMark /><span className="eyebrow">{step} - {subtitle}</span><h1>{title}</h1><p>Premium, calm, human-made UI for Myanmar online business owners.</p></header>;
+function Header({ step, title, subtitle, tagline }: { step: string; title: string; subtitle: string; tagline: string }) {
+  return <header className="page-header"><BrandMark /><span className="eyebrow">{step} - {subtitle}</span><h1>{title}</h1><p>{tagline}</p></header>;
 }
 
 function BottomNav({ backLabel, nextLabel, onBack, onNext }: { backLabel: string; nextLabel: string; onBack: () => void; onNext: () => void }) {
